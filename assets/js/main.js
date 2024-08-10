@@ -317,17 +317,18 @@ import gsap from 'gsap';
   magneto.addEventListener('mouseleave', resetMagneto);
 
 
-document.addEventListener('DOMContentLoaded', () => {
+  document.addEventListener('DOMContentLoaded', () => {
     const downloadButton = document.getElementById('downloadBtn');
 
     downloadButton.addEventListener('click', () => {
         const link = document.createElement('a');
-        link.href = 'https://drive.google.com/uc?export=download&id=1aaXIvnLJd3d05Y4kIxQJoCpZ-PVZUkVn'; // Google Drive direct download link
+        link.href = 'https://drive.google.com/uc?export=download&id=1pYwyR8juzwl4TDX4NGI_ItUKmDSh6BHB'; // Updated Google Drive direct download link
         link.download = 'Mehul_Resume.pdf'; // The default filename for the download
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
     });
 });
+
 
 })();
