@@ -1,0 +1,287 @@
+*,
+*::after,
+*::before {
+	box-sizing: border-box;
+}
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px; /* Adjust scrollbar width */
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: transparent /* Color of the track */
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: var(--accent-color); /* Accent color for the scrollbar thumb */
+    border-radius: 5px; /* Rounded corners for the thumb */
+  }
+
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-color); /* Darker shade of the accent color on hover */
+  }
+
+:root {
+	font-size: 18px;
+}
+
+:root { 
+	--background-color: #000101; /* Background color for the entire website, including individual sections */
+	--default-color: #d9dadb; /* Default color used for the majority of the text content across the entire website */
+	--heading-color: #fff; /* Color for headings, subheadings and title throughout the website */
+	--accent-color: #14b32f; /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
+	--alternate-accent-color: #0c711d; /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
+	--contrast-color: #050d18; /* The contrast color is used for elements when the background color is one of the heading, accent, or default colors. Its purpose is to ensure proper contrast and readability when placed over these more dominant colors */
+	--stroke1 : #0cba75;
+	--stroke2 : #146eb3;
+	--stroke3 : #b0b314;
+	--stroke4 : #015e3a;
+}
+  
+
+body {
+	margin: 0;
+	--color-text: #111;
+	--color-bg: #d8d2cd;
+	--color-link: #b41717;
+	--color-link-hover: #000;
+	--color-bg-alt: #c3bcbc;
+	--color-text-alt: #111;
+	color: var(--color-text);
+	background-color: var(--color-bg);
+	/* font-family: roc-grotesk, sans-serif; */
+	text-transform: uppercase;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	overflow-x: hidden;
+}
+
+.gallery-content {
+	--color-text: var(--accent-color);
+	--color-text-alt: var(--alternate-accent-color);
+	--color-bg: var(--contrast-color);
+	--color-bg-alt: var(--contrast-color);
+	--color-link-hover: var(--default-color);
+}
+
+
+/* Page Loader */
+.js .loading::before,
+.js .loading::after {
+	content: '';
+	position: fixed;
+	z-index: 1000;
+}
+
+.js .loading::before {
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: var(--contrast-color);
+}
+
+.js .loading::after {
+	top: 50%;
+	left: 50%;
+	width: 60px;
+	height: 60px;
+	margin: -30px 0 0 -30px;
+	border-radius: 50%;
+	opacity: 0.4;
+	background: var(--accent-color);
+	animation: loaderAnim 0.7s linear infinite alternate forwards;
+
+}
+
+@keyframes loaderAnim {
+	to {
+		opacity: 1;
+		transform: scale3d(0.5,0.5,1);
+	}
+}
+
+.grid {
+	position: relative;
+	width: 100%;
+	display: grid;
+	grid-template-columns: repeat(8,1fr);
+}
+
+.grid__item {
+	position: relative;
+	will-change: transform;
+	grid-column: var(--c);
+	grid-row: var(--r);
+	height: 250px;
+}
+
+.grid__item-img {
+
+	position: relative;
+	width: 250px;
+	height: 250px;
+	aspect-ratio: 1;
+	background-size: cover;
+	background-position: 50% 50%;
+	will-change: transform, opacity;
+}
+
+
+.demo-1 .grid__item-img {
+	filter: contrast(70%);
+}
+
+.cover {
+	position: fixed;
+	width: 100%;
+	height: 100vh;
+	top: 0;
+	left: 0;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	pointer-events: none;
+	transition: opacity .4s ease-in-out, visibility .4s ease-in-out;
+
+}
+
+svg {
+	width : 80%;
+	font-weight: 700;
+	opacity: 0.5;
+}
+svg text{
+	font-size:2.6rem;
+	stroke-width: 1;
+	letter-spacing: -1px;
+}
+svg text.text-body{
+	stroke: var(--accent-color);
+	animation: 4s infinite alternate animate-stroke;
+}
+
+svg text.dot{
+	fill :var(--accent-color);
+	stroke : var(--accent-color);
+	animation: 3s infinite alternate animate-dot;
+
+}
+
+@keyframes animate-stroke{
+	0%{
+		fill:transparent;
+		stroke : var(--accent-color);
+		stroke-width: 1;
+		stroke-dashoffset: 25%;
+		stroke-dasharray: 0 32%;
+		opacity: 0.5;
+	}
+	15%{
+		stroke: var(--stroke1);
+	}
+	35%{
+		stroke: var(--stroke2);
+	}
+	50%{
+		fill:transparent;
+		stroke: var(--stroke3);
+		stroke-width: 1;
+	}
+	75%{
+		stroke: var(--stroke4);
+	}
+	/* 80%{
+		fill:var(--accent-color);
+		stroke : transparent;
+		stroke-width: 0;
+		stroke-dashoffset: -25%;
+		stroke-dasharray: 32% 0;
+		opacity: 0.5;
+	} */
+	100%{
+		fill:var(--accent-color);
+		stroke : transparent;
+		stroke-width: 0;
+		stroke-dashoffset: -25%;
+		stroke-dasharray: 32% 0;
+		opacity: 1;
+	}
+}
+
+
+
+.cover__title {
+	/* font-family: novecento-sans-wide, sans-serif; */
+	font-size: 8vw;
+	font-weight: 600;
+	margin: 0;
+}
+
+.cover__title sup {
+	font-size: 4vw;
+	font-weight: bold;
+	vertical-align: 75%;
+}
+
+.cover__subtitle {
+	font-size: 1.5rem;
+	font-weight: 400;
+	margin: 0;
+	opacity: 0;
+}
+
+@media(max-width:768px)
+{
+	.cover__subtitle{
+		opacity: 1;
+	}
+}
+
+.footer {
+	color: var(--color-text-alt);
+	background: var(--color-bg-alt);
+	height: 100vh;
+	font-size: 5vh;
+	line-height: 1.2;
+	position: relative;
+	z-index: 200;
+	text-transform: none;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.footer p {
+	max-width: 40ch;
+}
+
+@media screen and (min-width: 53em) {
+	.frame {
+		height: 100vh;
+		grid-template-columns: auto 1fr;
+		grid-template-rows: auto 1fr auto;
+		grid-template-areas: 'prev sponsor' '... ...' 'title demos';
+	}
+	.frame__demos {
+		justify-self: end;
+		margin: 0 1rem;
+		white-space: nowrap;
+	}
+	.frame__demo--current::after {
+		content: '';
+		position: absolute;
+		top: 100%;
+		height: 120%;
+		width: 1px;
+		left: 50%;
+		background: currentColor;
+	}
+	.frame__demos-title {
+		display: inline;
+	}
+}

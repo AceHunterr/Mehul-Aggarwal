@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+
+<head>
+
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>My Asthetics</title>
+	<meta name="description" content="Various effects for images when scrolling a page." />
+	<meta name="keywords" content="scroll, effect, animation, image, gsap, lenis" />
+	<meta name="author" content="Codrops" />
+	<!-- <link rel="shortcut icon" href="favicon.ico"> -->
+	<link rel="stylesheet" href="https://use.typekit.net/ont3ybf.css">
+	<!-- <link rel="stylesheet" type="text/css" href="assets/css/main.css" /> -->
+	<link rel="stylesheet" type="text/css" href="assets/css/gallery.css" />
+	<script>
+	document.documentElement.className = "js";
+	var supportsCssVars = function() { var e, t = document.createElement("style"); return t.innerHTML = "root: { --tmp-var: bold; }", document.head.appendChild(t), e = !!(window.CSS && window.CSS.supports && window.CSS.supports("font-weight", "var(--tmp-var)")), t.parentNode.removeChild(t), e };
+	supportsCssVars() || alert("Please view this demo in a modern browser that supports CSS Variables.");
+	</script>
+	<script src="//tympanus.net/codrops/adpacks/analytics.js"></script>
+
+
+	<script src="https://tympanus.net/codrops/adpacks/cda_sponsor.js"></script>
+	<script type="module" src="https://unpkg.com/@studio-freight/lenis@1.0.33/dist/lenis.min.js"></script>
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+	<style>
+
+		html.lenis {
+		  height: auto;
+		}
+		.lenis.lenis-smooth {
+		  scroll-behavior: auto;
+		}
+		.lenis.lenis-smooth [data-lenis-prevent] {
+		  overscroll-behavior: contain;
+		}
+		.lenis.lenis-stopped {
+		  overflow: hidden;
+		}
+		
+		#progressBar {
+		  position: fixed;
+		  top: 0;
+		  left: 0;
+		  width: 0%;
+		  height: 5px;
+		  background-color: #4caf50;
+		  z-index: 1000;
+		}
+		.circle {
+		  height: 24px;
+		  width: 24px;
+		  border-radius: 24px;
+		  background-color: black;
+		  position: fixed; 
+		  top: 0;
+		  left: 0;
+		  pointer-events: none;
+		  transition: opacity 0.3s;
+		  z-index: 999  ; 
+		}
+	
+		.aos-element {
+	  transition: opacity 0.5s ease-in-out;
+	  opacity: 0;
+	}
+	
+	.aos-animate-scroll-down {
+	  opacity: 1;
+	}
+	
+	.aos-animate-scroll-up {
+	  opacity: 0;
+	}
+
+
+.home-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    border: none;
+    border-radius: 50%;
+    background-color: #4caf50;
+    color: white;
+    font-size: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    z-index: 1000; /* Ensure it stays on top */
+    transition: background-color 0.3s ease;
+}
+
+.home-button:hover {
+    background-color: #0a880e;
+}
+
+.home-button i {
+    pointer-events: none; /* Ensure the icon doesn't interfere with the button click */
+}
+
+		</style>
+	
+</head>
+
+<body class="gallery-content loading">
+	<main>
+		<div id="progressBar"></div>
+
+	<!-- <a href="index.html"> -->
+		<button id="homeButton" class="home-button" >
+			<i class="fas fa-home"></i>
+		</button>
+	<!-- </a> -->
+
+		<div class="circle"></div>
+		<div class="circle"></div>
+		<div class="circle"></div>
+		<div class="circle"></div>
+		<div class="circle"></div>
+		<div class="circle"></div>
+		<div class="circle"></div>
+		<div class="circle"></div>
+		<div class="circle"></div>
+		<div class="circle"></div>
+		<div class="circle"></div>
+		<div class="circle"></div>
+		<div class="circle"></div>
+		<div class="circle"></div>
+		<div class="circle"></div>
+		<div class="circle"></div>
+		<div class="circle"></div>
+		<div class="circle"></div>
+		<div class="circle"></div>
+		<div class="circle"></div>
+	
+		<div class="content">
+			<div class="grid">
+				<div class="grid__item" style="--r: 1;--c: 1;">
+					<div class="grid__item-img" style="background-image:url(assets/gallery-img/1.webp);"></div>
+				</div>
+
+				<div class="grid__item" style="--r: 1;--c: 3;">
+					<div class="grid__item-img" style="background-image:url(assets/gallery-img/2.webp);"></div>
+				</div>
+
+				<div class="grid__item" style="--r: 1;--c: 5;">
+					<div class="grid__item-img" style="background-image:url(assets/gallery-img/3.webp);"></div>
+				</div>
+
+				<div class="grid__item" style="--r: 2;--c: 2;">
+					<div class="grid__item-img" style="background-image:url(assets/gallery-img/4.webp);"></div>
+				</div>
+
+				<div class="grid__item" style="--r: 2;--c: 3;">
+					<div class="grid__item-img" style="background-image:url(assets/gallery-img/5.webp);"></div>
+				</div>
+
+				<div class="grid__item" style="--r: 2;--c: 6;">
+					<div class="grid__item-img" style="background-image:url(assets/gallery-img/6.webp);"></div>
+				</div>
+
+				<div class="grid__item" style="--r: 3;--c: 1;">
+					<div class="grid__item-img" style="background-image:url(assets/gallery-img/7.webp);"></div>
+				</div>
+
+				<div class="grid__item" style="--r: 3;--c: 2;">
+					<div class="grid__item-img" style="background-image:url(assets/gallery-img/8.webp);"></div>
+				</div>
+
+				<div class="grid__item" style="--r: 3;--c: 5;">
+					<div class="grid__item-img" style="background-image:url(assets/gallery-img/9.webp);"></div>
+				</div>
+
+				<div class="grid__item" style="--r: 4;--c: 4;">
+					<div class="grid__item-img" style="background-image:url(assets/gallery-img/10.webp);"></div>
+				</div>
+
+				<div class="grid__item" style="--r: 4;--c: 6;">
+					<div class="grid__item-img" style="background-image:url(assets/gallery-img/11.webp);"></div>
+				</div>
+
+
+				<div class="grid__item" style="--r: 5;--c: 5;">
+					<div class="grid__item-img" style="background-image:url(assets/gallery-img/12.webp);"></div>
+				</div>
+				<div class="grid__item" style="--r: 5;--c: 2;">
+					<div class="grid__item-img" style="background-image:url(assets/gallery-img/13.webp);"></div>
+				</div>
+				<div class="grid__item" style="--r: 5;--c: 3;">
+					<div class="grid__item-img" style="background-image:url(assets/gallery-img/14.webp);"></div>
+				</div>
+
+
+				<div class="grid__item" style="--r: 6;--c: 1;">
+					<div class="grid__item-img" style="background-image:url(assets/gallery-img/15.webp);"></div>
+				</div>
+				<div class="grid__item" style="--r: 6;--c: 4;">
+					<div class="grid__item-img" style="background-image:url(assets/gallery-img/16.webp);"></div>
+				</div>
+				<div class="grid__item" style="--r: 6;--c: 6;">
+					<div class="grid__item-img" style="background-image:url(assets/gallery-img/17.webp);"></div>
+				</div>
+
+				<div class="grid__item" style="--r: 7;--c: 2;">
+					<div class="grid__item-img" style="background-image:url(assets/gallery-img/18.webp);"></div>
+				</div>
+				<div class="grid__item" style="--r: 7;--c: 3;">
+					<div class="grid__item-img" style="background-image:url(assets/gallery-img/19.webp);"></div>
+				</div>
+				<div class="grid__item" style="--r: 7;--c: 6;">
+					<div class="grid__item-img" style="background-image:url(assets/gallery-img/20.webp);"></div>
+				</div>
+
+				<div class="grid__item" style="--r: 8;--c: 1;">
+					<div class="grid__item-img" style="background-image:url(assets/gallery-img/21.webp);"></div>
+				</div>
+				<div class="grid__item" style="--r: 8;--c: 5;">
+					<div class="grid__item-img" style="background-image:url(assets/gallery-img/22.webp);"></div>
+				</div>
+
+
+				<div class="grid__item" style="--r: 9;--c: 2;">
+					<div class="grid__item-img" style="background-image:url(assets/gallery-img/23.webp);"></div>
+				</div>
+				<div class="grid__item" style="--r: 9;--c: 4;">
+					<div class="grid__item-img" style="background-image:url(assets/gallery-img/24.webp);"></div>
+				</div>
+
+
+				<div class="grid__item" style="--r: 10;--c: 1;">
+					<div class="grid__item-img" style="background-image:url(assets/gallery-img/25.webp);"></div>
+				</div>
+				<div class="grid__item" style="--r: 10;--c: 3;">
+					<div class="grid__item-img" style="background-image:url(assets/gallery-img/26.webp);"></div>
+				</div>
+				<div class="grid__item" style="--r: 10;--c: 5;">
+					<div class="grid__item-img" style="background-image:url(assets/gallery-img/27.webp);"></div>
+				</div>
+
+
+
+				<div class="grid__item" style="--r: 11;--c: 2;">
+					<div class="grid__item-img" style="background-image:url(assets/gallery-img/28.webp);"></div>
+				</div>
+				<div class="grid__item" style="--r: 11;--c: 4;">
+					<div class="grid__item-img" style="background-image:url(assets/gallery-img/29.webp);"></div>
+				</div>
+				<div class="grid__item" style="--r: 11;--c: 6;">
+					<div class="grid__item-img" style="background-image:url(assets/gallery-img/30.webp);"></div>
+				</div>
+
+
+
+				<div class="grid__item" style="--r: 12;--c: 1;">
+					<div class="grid__item-img" style="background-image:url(assets/gallery-img/31.webp);"></div>
+				</div>
+				<div class="grid__item" style="--r: 12;--c: 3;">
+					<div class="grid__item-img" style="background-image:url(assets/gallery-img/32.webp);"></div>
+				</div>
+				<div class="grid__item" style="--r: 12;--c: 5;">
+					<div class="grid__item-img" style="background-image:url(assets/gallery-img/33.webp);"></div>
+				</div>
+
+				
+				<div class="grid__item" style="--r: 13;--c: 2;">
+					<div class="grid__item-img" style="background-image:url(assets/gallery-img/34.webp);"></div>
+				</div>
+				<div class="grid__item" style="--r: 13;--c: 4;">
+					<div class="grid__item-img" style="background-image:url(assets/gallery-img/35.webp);"></div>
+				</div>
+				<div class="grid__item" style="--r: 13;--c: 6;">
+					<div class="grid__item-img" style="background-image:url(assets/gallery-img/36.webp);"></div>
+				</div>
+
+				<div class="grid__item" style="--r: 14;--c: 1;">
+					<div class="grid__item-img" style="background-image:url(assets/gallery-img/37.webp);"></div>
+				</div>
+				<div class="grid__item" style="--r: 14;--c: 6;">
+					<div class="grid__item-img" style="background-image:url(assets/gallery-img/38.webp);"></div>
+				</div>
+
+
+				<div class="grid__item" style="--r: 15;--c: 2;">
+					<div class="grid__item-img" style="background-image:url(assets/gallery-img/39.webp);"></div>
+				</div>
+				<div class="grid__item" style="--r: 15;--c: 3;">
+					<div class="grid__item-img" style="background-image:url(assets/gallery-img/40.webp);"></div>
+				</div>
+				<div class="grid__item" style="--r: 15;--c: 5;">
+					<div class="grid__item-img" style="background-image:url(assets/gallery-img/41.webp);"></div>
+				</div>
+
+				<div class="grid__item" style="--r: 16;--c: 5;">
+					<div class="grid__item-img" style="background-image:url(assets/gallery-img/42.webp);"></div>
+				</div>
+
+				<div class="grid__item" style="--r: 17;--c: 2;">
+					<div class="grid__item-img" style="background-image:url(assets/gallery-img/43.webp);"></div>
+				</div>
+				<div class="grid__item" style="--r: 17;--c: 6;">
+					<div class="grid__item-img" style="background-image:url(assets/gallery-img/44.webp);"></div>
+				</div>
+				<div class="grid__item" style="--r: 17;--c: 1;">
+					<div class="grid__item-img" style="background-image:url(assets/gallery-img/45.webp);"></div>
+				</div>
+
+				<div class="grid__item" style="--r: 18;--c: 2;">
+					<div class="grid__item-img" style="background-image:url(assets/gallery-img/46.webp);"></div>
+				</div>
+				<div class="grid__item" style="--r: 18;--c: 3;">
+					<div class="grid__item-img" style="background-image:url(assets/gallery-img/47.webp);"></div>
+				</div>
+				<div class="grid__item" style="--r: 18;--c: 5;">
+					<div class="grid__item-img" style="background-image:url(assets/gallery-img/48.webp);"></div>
+				</div>
+
+				<div class="grid__item" style="--r: 19;--c: 1;">
+					<div class="grid__item-img" style="background-image:url(assets/gallery-img/49.webp);"></div>
+				</div>
+				<div class="grid__item" style="--r: 19;--c: 4;">
+					<div class="grid__item-img" style="background-image:url(assets/gallery-img/50.webp);"></div>
+				</div>
+				<div class="grid__item" style="--r: 19;--c: 6;">
+					<div class="grid__item-img" style="background-image:url(assets/gallery-img/51.webp);"></div>
+				</div>
+
+				
+				<div class="grid__item" style="--r: 20;--c: 1;">
+					<div class="grid__item-img" style="background-image:url(assets/gallery-img/52.webp);"></div>
+				</div>
+				<div class="grid__item" style="--r: 20;--c: 2;">
+					<div class="grid__item-img" style="background-image:url(assets/gallery-img/53.webp);"></div>
+				</div>
+				<div class="grid__item" style="--r: 20;--c: 3;">
+					<div class="grid__item-img" style="background-image:url(assets/gallery-img/54.webp);"></div>
+				</div>
+
+				
+				
+				<div class="grid__item" style="--r: 21;--c: 3;">
+					<div class="grid__item-img" style="background-image:url(assets/gallery-img/55.webp);"></div>
+				</div>
+				<div class="grid__item" style="--r: 21;--c: 5;">
+					<div class="grid__item-img" style="background-image:url(assets/gallery-img/56.webp);"></div>
+				</div>
+
+				<div class="grid__item" style="--r: 22;--c: 2;">
+					<div class="grid__item-img" style="background-image:url(assets/gallery-img/57.webp);"></div>
+				</div>
+				<div class="grid__item" style="--r: 22;--c: 4;">
+					<div class="grid__item-img" style="background-image:url(assets/gallery-img/58.webp);"></div>
+				</div>
+
+				
+				<div class="grid__item" style="--r: 23;--c: 1;">
+					<div class="grid__item-img" style="background-image:url(assets/gallery-img/59.webp);"></div>
+				</div>
+				<div class="grid__item" style="--r: 23;--c: 3;">
+					<div class="grid__item-img" style="background-image:url(assets/gallery-img/60.webp);"></div>
+				</div>
+				<div class="grid__item" style="--r: 23;--c: 5;">
+					<div class="grid__item-img" style="background-image:url(assets/gallery-img/61.webp);"></div>
+				</div>
+
+				
+				<div class="grid__item" style="--r: 24;--c: 2;">
+					<div class="grid__item-img" style="background-image:url(assets/gallery-img/62.webp);"></div>
+				</div>
+				<div class="grid__item" style="--r: 24;--c: 4;">
+					<div class="grid__item-img" style="background-image:url(assets/gallery-img/63.webp);"></div>
+				</div>
+			</div>
+			
+			<div class="cover">
+				<!-- <h2 class="cover__title">My Asthetics</h2>
+				<h3 class="cover__subtitle">並外れたファッション</h3> -->
+				<svg viewBox="0 0 400 160">
+					<text x="50%" y="50%" dy=".32em" text-anchor="middle" class="text-body">
+						MY ASTHETICS
+					</text>
+				</svg>
+				<h3 class="cover__subtitle">View on desktop for best experience.</h3> 
+			</div>
+			<!-- <div class="footer">
+				<p>From the dawn of civilisation onwards crowds have always undergone the influence of illusions. It is to the creators of illusions that they have raised more temples, statues, and altars than to any other class of men. </p>
+			</div> -->
+		</div>
+	</main>
+
+	<script>
+// 		function goHome() {
+//     window.location.href = '/'; // Adjust the URL as needed
+// }
+	</script>
+
+	<script src="https://tympanus.net/codrops/adpacks/cda_sponsor.js"></script>
+	<script type="module" src="https://unpkg.com/@studio-freight/lenis@1.0.33/dist/lenis.min.js"></script>
+	<script type="module" src="assets/js/gallery.js"></script>
+	<script type="module" src="assets/js/main.js"></script>
+	<script type="module" src="assets/js/cutsom.js"></script>
+	
+	<script>
+		document.addEventListener("DOMContentLoaded", function() {
+    document.getElementById("homeButton").addEventListener("click", function() {
+        window.location.href = '/'; // Adjust the URL as needed
+    });
+});
+	</script>
+</body>
+
+</html>
